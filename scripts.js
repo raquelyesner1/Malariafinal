@@ -20,7 +20,7 @@ const plot2Div = document.getElementById('text1');
 const plot3Div = document.getElementById('chart2');
 const plot4Div = document.getElementById('text2');
 
-Plotly.d3.csv("MALARIABED.csv", function(rows){
+Plotly.d3.csv("malariabeds.csv", function(rows){
 
     var trace0 = {
         type: "scatter",
