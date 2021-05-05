@@ -20,16 +20,17 @@ const plot2Div = document.getElementById('text1');
 const plot3Div = document.getElementById('chart2');
 const plot4Div = document.getElementById('text2');
 
-Plotly.d3.csv("https://raw.githubusercontent.com/raquelyesner1/Malariafinal/main/MALARIABED.csv"), function(rows){
-    
-var trace0 = {
+Plotly.d3.csv("MALARIABED.csv", function(rows){
+
+    var trace0 = {
         type: "scatter",
         mode: "lines",
         name: 'Burkina Faso',
         x: unpack(rows, 'Year'),
-        y: unpack(rows, 'Burkina Fas'),
+        y: unpack(rows, 'Burkina Faso'),
         line: { color: lineColors.green }
     }
+    console.log(trace0.x, trace0.y);
 
     var trace1 = {
         type: "scatter",
@@ -72,23 +73,24 @@ var trace0 = {
         y: unpack(rows, 'Tanzania'),
         line: { color: lineColors.yellow }
     }
-    
-    var data1 = [trace0,trace1, trace2, trace3, trace4, trace5];
+
+    var data1 = [trace0, trace1, trace2, trace3, trace4, trace5];
 
     var layout1 = {
         title: 'malaria beds',
         xaxis: {
             autorange: true,
-            type: 'date',
+            type: 'date'
         }
-       
+
     }
-    
-   Plotly.newplot(plot1Div,data1,layout1,config);
-        
+
+    Plotly.newPlot(plot1Div,data1,layout1,config);
 
 
-function unpack(rows, key) {
-    return rows.map(function(row) { return row[key]; });
-}
-}
+
+
+    function unpack(rows, key) {
+        return rows.map(function(row) {return row[key];});
+    }
+})
